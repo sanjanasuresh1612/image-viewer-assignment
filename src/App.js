@@ -4,7 +4,7 @@ import Login from './screens/login/Login';
 import Home from './screens/home/Home';
 import Profile from './screens/profile/Profile';
 
-
+// The DOM to render is switched dyanmically based on the route
 const App = () => (
     <Switch>
         <Route exact path='/' render={({ history }, props) => <Login {...props} history={history} />} />

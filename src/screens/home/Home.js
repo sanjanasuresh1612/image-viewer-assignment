@@ -170,6 +170,7 @@ class Home extends Component {
         });
     }
 
+    // Getting user information using access token
     getUserInfo = () => {
         let that = this;
         let url = `${constants.userInfoUrl}/?access_token=${sessionStorage.getItem('access-token')}`;
@@ -203,11 +204,13 @@ class Home extends Component {
         });
     }
 
+    // Logout handler
     logout = () => {
         sessionStorage.clear();
         this.props.history.replace('/');
     }
 
+    // Navigating to Profile view from Home page
     navigateToAccount = () => {
         this.props.history.push('/profile');
     }
@@ -306,6 +309,7 @@ class HomeItem extends Component {
         )
     }
 
+    // Like button clicked
     onLikeClicked = (id) => {
         if (this.state.isLiked) {
             this.setState({
@@ -319,6 +323,7 @@ class HomeItem extends Component {
         this.props.onLikedClicked(id)
     }
 
+    // When comments are entered, this handler takes care
     commentChangeHandler = (e) => {
         this.setState({
             comment: e.target.value,
@@ -326,6 +331,7 @@ class HomeItem extends Component {
         this.props.commentChangeHandler(e);
     }
 
+    // When Add button is clicked to add a comment
     onAddCommentClicked = (id) => {
         if (this.state.comment === "" || typeof this.state.comment === undefined) {
             return;

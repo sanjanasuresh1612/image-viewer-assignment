@@ -78,6 +78,8 @@ class Header extends Component {
                     {(screen === "Login" || screen === "Home") && <span className="header-logo">Image Viewer</span>}
                     {(screen === "Profile") && <Link style={{ textDecoration: 'none', color: 'white' }} to="/home"><span className="header-logo">Image Viewer</span></Link>}
                     <div className={classes.grow} />
+
+                    {/* If Screen is Home, add a search box*/} 
                     {(screen === "Home") &&
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
@@ -88,6 +90,8 @@ class Header extends Component {
                             }} />
                         </div>
                     }
+
+                    {/* If screen is home or profile, add a avatar icon holder*/}
                     {(screen === "Home" || screen === "Profile") &&
                         <div>
                             <IconButton onClick={this.handleClick}>
@@ -123,22 +127,25 @@ class Header extends Component {
         </div>)
     }
 
+    // Handling click events
     handleClick = (event) => {
         this.setState({
             anchorEl: event.currentTarget
         })
     }
 
+    // Handling account or profile section
     handleAccount = () => {
         this.props.handleAccount();
         this.handleClose();
     }
-
+    // Handling logout functionality
     handleLogout = () => {
         this.props.handleLogout();
         this.handleClose();
     }
 
+    //Handling close button functionality
     handleClose = () => {
         this.setState({ anchorEl: null });
     }

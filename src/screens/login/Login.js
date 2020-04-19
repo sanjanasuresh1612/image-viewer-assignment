@@ -39,6 +39,7 @@ class Login extends Component {
         };
     }
 
+    // When Login button is clicked, checking for username and password and logging in
     loginClickHandler = () => {
         this.setState({ incorrectUsernamePassword: "disp-none" });
         this.state.username === "" ? this.setState({ usernameRequired: "disp-block" }) : this.setState({ usernameRequired: "disp-none" });
@@ -56,14 +57,17 @@ class Login extends Component {
         }
     }
 
+    // Navigating to home page after login
     navigateToHome = () => {
         this.props.history.push('/home');
     }
 
+    // When username field value is changed
     inputUsernameChangeHandler = (e) => {
         this.setState({ username: e.target.value })
     }
 
+    // When password field value is changed
     inputPasswordChangeHandler = (e) => {
         this.setState({ password: e.target.value })
     }

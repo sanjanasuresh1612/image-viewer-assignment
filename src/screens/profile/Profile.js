@@ -56,7 +56,7 @@ class Profile extends Component {
             follows: null,
             followed_by: null,
             editOpen: false,
-            fullNameRequired: 'dispNone',
+            fullNameRequired: 'disp-none',
             newFullName: '',
             mediaData: null,
             imageModalOpen: false,
@@ -71,6 +71,7 @@ class Profile extends Component {
         this.getMediaData();
     }
 
+    // Getting user info using the access token
     getUserInfo = () => {
         let that = this;
         let url = `${constants.userInfoUrl}/?access_token=${sessionStorage.getItem('access-token')}`;
@@ -107,7 +108,7 @@ class Profile extends Component {
             console.log('error media data', error);
         });
     }
-
+    // The below handlers are to open / close / edit modal popups
     handleOpenEditModal = () => {
         this.setState({ editOpen: true });
     }
@@ -133,11 +134,12 @@ class Profile extends Component {
         })
     }
 
+    // To update the user name
     updateClickHandler = () => {
         if (this.state.newFullName === '') {
-            this.setState({ fullNameRequired: 'dispBlock' })
+            this.setState({ fullNameRequired: 'disp-block' })
         } else {
-            this.setState({ fullNameRequired: 'dispNone' })
+            this.setState({ fullNameRequired: 'disp-none' })
         }
 
         if (this.state.newFullName === "") { return }
@@ -149,6 +151,7 @@ class Profile extends Component {
         this.handleCloseEditModal()
     }
 
+    // When like button is clicked
     likeClickHandler = (id) => {
         var foundItem = this.state.currentItem;
 
@@ -172,6 +175,7 @@ class Profile extends Component {
         }
     }
 
+    // To add a new comment
     onAddCommentClicked = (id) => {
         if (this.state.currentComment === "" || typeof this.state.currentComment === undefined) {
             return;
@@ -189,6 +193,7 @@ class Profile extends Component {
         })
     }
 
+    // When comments is changed for a post
     commentChangeHandler = (e) => {
         this.setState({
             currentComment: e.target.value
